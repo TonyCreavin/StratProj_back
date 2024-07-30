@@ -5,6 +5,7 @@ import dotenv from 'dotenv'; // Make sure to import dotenv and configure it
 import globalErrorHandler from './controllers/errorController.js';
 import User from './models/userModel.js';
 import userRouter from './routes/userRoute.js';
+import Task from './models/taskModel.js';
 
 import taskRouter from './routes/taskRoute.js';
 
@@ -68,6 +69,15 @@ app.post('/api/v1/users/register', async (req, res) => {
     res.status(201).json({ status: 'success', token, data: { user: newUser } });
   } catch (err) {
     res.status(400).json({ status: 'error', message: err.message });
+  }
+});
+//this is a test route
+app.get('api/v1/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 

@@ -13,6 +13,11 @@ router.post('/login', signin);
 
 router.route('/').get(getAllUsers).post(createUser);
 
-router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
+router
+  .route('/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser)
+  .put(updateUser);
 
 export default router;

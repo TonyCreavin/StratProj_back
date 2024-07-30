@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same',
     },
   },
+
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -38,6 +39,11 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  street: String,
+  city: String,
+  postcode: String,
+  country: String,
+  phone: String,
 });
 
 userSchema.pre('save', async function (next) {
@@ -70,8 +76,8 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 const User = mongoose.model('User', userSchema);
 
 // const testUser = new User({
-//   name: 'Test User3',
-//   email: 'email@email3.com',
+//   name: 'Test User5',
+//   email: 'email@email5.com',
 //   password: 'password',
 //   passwordConfirm: 'password',
 // });
