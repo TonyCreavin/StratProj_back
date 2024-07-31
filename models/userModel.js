@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
   city: String,
   postcode: String,
   country: String,
-  phone: String,
+  phone: Number,
 });
 
 userSchema.pre('save', async function (next) {
